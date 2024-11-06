@@ -30,16 +30,21 @@ pipeline {
         }
     }
 
-    post {
+     post {
         always {
             // Clean up the workspace after the build
             cleanWs()
         }
-        success {
-            echo 'Tests passed successfully!'
-        }
+      success {            
+          mail to: 'navneetkumar142000@gmail.com',                
+               subject: "Jenkins Build Successful: ${env.JOB_NAME} #${env.BUILD_NUMBER}",                  
+               body: "Good news! The Jenkins build for job ${env.JOB_NAME} #${env.BUILD_NUMBER} completed successfully.\nCheck it at ${env.BUILD_URL}"         
+         }
         failure {
-            echo 'Tests failed!'
+            mail to: 'navneetkumar142000@gmail.com',
+                subject: "Jenkins Build Failed: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: "Unfortunately, the Jenkins build for job ${env.JOB_NAME} #${env.BUILD_NUMBER} failed.\nCheck it at ${env.BUILD_URL}"
         }
     }
 }
+has context menu
