@@ -27,4 +27,3 @@ jobs:
         run: |
           python test_calculator.py
  
-has context menu
