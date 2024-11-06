@@ -47,4 +47,4 @@ pipeline {
         }
     }
 }
-has context menu
+
